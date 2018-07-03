@@ -1,0 +1,236 @@
+html,body{
+  margin: 0; 
+  padding: 0; 
+  font-family: 'Song Myung', serif; 
+  font-size: 120%;
+  background:#003366;
+}
+nav ul{
+  list-style: none;
+  padding:0;
+  background:#444;
+}
+
+nav ul li a{
+  color:#ddd;
+  text-decoration: none;
+  padding: .8rem 1rem;
+  display: block;
+  line-height: 1;
+}
+nav ul li{
+  border-bottom: 1px dotted #ddd;
+  text-align: center;
+}
+/*styling logo*/
+
+nav div:first-child h1{
+  line-height: 0;
+  padding: .8rem 0rem;
+  text-align: center;
+}
+
+
+nav div:first-child h1, nav ul{
+  margin:0;
+}
+
+.active{
+  background:#faffbd;
+  color: #444;
+}
+
+
+/*Styling for larger devices*/
+
+@media only screen and (min-width: 30em){
+  nav{
+    display: flex;
+    justify-content: space-between;
+    background: #036;
+    align-items: center;
+  }
+
+  nav ul{
+    display: flex;
+    align-items: center;
+    background:none;
+    flex-wrap: wrap;
+  }
+  nav div:first-child h1{
+    padding: 0;
+    margin:0 1rem;
+  }
+  /*      logo size!                  */
+  nav div:first-child img{
+    height: 120px;
+    width: 200PX;
+
+  }
+  nav ul li{
+    border-bottom:none;
+    flex: 1 0 auto;
+    position: relative;
+  }
+  nav ul li a{
+    padding:1.2rem 1rem;
+    border-radius: 10px;
+  }
+  nav ul li a::before, nav ul li a::after{
+    content: "";
+    position: absolute;
+    bottom:0;
+    right: 0;
+    width:0%;
+    height: 2px;
+    background:#faffbd;/*CHANGEd color of underline*/
+    transition: .2s width ease-in-out;
+  }
+
+  nav ul li a::before{
+    left:0;
+  }
+
+  nav ul li a:hover::after,nav ul li a:hover::before{
+    width: 50%;
+  } 
+
+}
+
+
+#context-box{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #f1f1f1;
+}
+.card_section{
+  position: relative;
+  height: 300px;
+  width: 600px;
+  /*margin: 10vh 50% 0 35%;*/
+  margin-top: 10vh;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #fff;
+  
+  align-items: center;
+  justify-content: center;
+}
+
+#card_front{
+  position: absolute;
+  left: 1%;
+  /*perspective: 600px;*/
+  background: #fff;
+  height:300px;
+  width: 98%;
+  border-radius: 5px;
+  border: 1% solid green;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  color: #4c3b4d;
+  text-align: center;
+  backface-visibility: hidden;
+  /*padding-top: 10%;*/
+}
+
+#card_back{
+  position: absolute;
+  /*position: absolute;*/
+  left: 1%;
+  height:300px;
+  width: 98%;
+  /*perspective: 600px;
+  height: 78%;
+  width: 98%;*/
+  border-radius: 5px;
+  border: 1% solid green;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  color: #003366;
+  background: #faffbd;
+  text-align: center;
+  border: 1% solid green;
+  transform: rotateY(180deg);
+  visibility: hidden;
+  /*backface-visibility: hidden;*/
+  /*padding-top: 10%;*/
+}
+
+#flip_btn_div{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#flip_btn_div button{
+  width: 600px;
+  /*margin: 10px 50% 0 35%;*/
+  background: #4c3b4d;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 10px;
+  letter-spacing: 1px;
+  outline: none;
+  transition: .3s;
+}
+
+button:hover{
+  opacity: .6;
+}
+/* Medium screens */
+@media all and (max-width: 800px) {
+  .navigation {
+    /* When on medium sized screens, we center it by evenly distributing empty space around items */
+    justify-content: space-around;
+  }
+
+   nav div:first-child img{
+    height: 20%;
+   }
+  .card_section{
+    height: 60%;
+    width: 100%;
+    margin: 1% 1% 1% 1%;
+  }
+
+  #card_front, #card_back{
+    height: 100%;
+    width: 100%;
+  }
+
+  #flip_btn_div{
+    height: 10%;
+    width: 100%;
+    margin: 1% 1% 1% 1%;
+  }
+
+  #flip_btn_div button{
+    width: 100%;
+  }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  .navigation {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+
+   nav div:first-child img{/*CHANGEd logo size on smaller screens*/
+    height: 20%;
+    width: 100%;
+   }
+
+  #context-box{
+    /*overflow-y: scroll;*/
+  }
+
+  #flip_btn_div{
+    display: none;
+  }
+  
+  }

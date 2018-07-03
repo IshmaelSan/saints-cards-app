@@ -1,0 +1,25 @@
+<!--<div *ngIf="cards?.length > 0;else noCards">
+	<ul *ngFor="let card of cards" class="collection">
+		<li class="collection-card">{{card.question}}</li>
+		<li class="collection-card">{{card.answer}}</li>
+	</ul>
+
+</div>-->
+<ng-template #noCards>
+	<hr>
+	<h5>There are no cards to show</h5>
+</ng-template>
+
+<div id="context-box">
+	<div class = "card_section" #card_section>
+		<div id = "card_front">{{getQuestion()}}
+		</div>
+		<div id = "card_back">{{getAnswer}}
+		</div>
+	</div>
+
+	<div id = "flip_btn_div"><button (click)="nextCard()" type="button" class="btn btn-primary">
+		Click
+	</button>
+</div>
+</div>
