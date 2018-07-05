@@ -11,15 +11,16 @@
 </ng-template>
 
 <div id="context-box">
-	<div class = "card_section" #card_section>
-		<div id = "card_front">{{currentQuestion}}
+	<div class = "card_section">
+		<div id = "card_front"  [@flipAnimation]='stateFront' click>{{currentQuestion}}
 		</div>
-		<div id = "card_back">{{currentAnswer}}<!--initally hidden 180 deg behind card_front-->
+		<div id = "card_back" [@flipAnimation]='stateBack'>{{currentAnswer}}<!--initally hidden 180 deg behind card_front-->
 		</div>
 	</div>
 
-	<div id = "flip_btn_div"><button (click)="nextCard()" type="button" class="btn btn-primary">
+	<div id = "flip_btn_div"><button (click)="nextCard()" type="button" class="btn btn-info">
 		Click
 	</button>
 </div>
+<app-add-card></app-add-card>
 </div>

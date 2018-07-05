@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
 html,body{
   margin: 0; 
   padding: 0; 
@@ -98,13 +100,13 @@ nav div:first-child h1, nav ul{
 }
 
 
-#context-box{
+#context-box, .btn-sect{
   width: 100%;
   height: 100%;
   position: fixed;
   background-color: #f1f1f1;
 }
-.card_section{
+.card_section, .card-content{
   position: relative;
   height: 300px;
   width: 600px;
@@ -118,11 +120,14 @@ nav div:first-child h1, nav ul{
   align-items: center;
   justify-content: center;
 }
+.card-content{
+  margin-top: 5px;
+}
 
-#card_front{
+#card_front, #card_back{
   position: absolute;
   left: 1%;
-  /*perspective: 600px;*/
+  perspective: 600px;
   background: #fff;
   height:300px;
   width: 98%;
@@ -133,30 +138,13 @@ nav div:first-child h1, nav ul{
   color: #4c3b4d;
   text-align: center;
   backface-visibility: hidden;
-  /*padding-top: 10%;*/
 }
 
-#card_back{
-  position: absolute;
-  /*position: absolute;*/
-  left: 1%;
-  height:300px;
-  width: 98%;
-  /*perspective: 600px;
-  height: 78%;
-  width: 98%;*/
-  border-radius: 5px;
-  border: 1% solid green;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  color: #003366;
+#card_back{  
   background: #faffbd;
-  text-align: center;
-  border: 1% solid green;
+  color: #003366;
   transform: rotateY(180deg);
   visibility: hidden;
-  /*backface-visibility: hidden;*/
-  /*padding-top: 10%;*/
 }
 
 #flip_btn_div{
@@ -165,10 +153,9 @@ nav div:first-child h1, nav ul{
   margin-right: auto;
 }
 
-#flip_btn_div button{
+#flip_btn_div button, .add-card-btn{
   width: 600px;
-  /*margin: 10px 50% 0 35%;*/
-  background: #4c3b4d;
+  background: #036;
   color: #fff;
   border-radius: 5px;
   font-size: 14px;
@@ -178,9 +165,17 @@ nav div:first-child h1, nav ul{
   transition: .3s;
 }
 
-button:hover{
+button:hover, .add-card-btn:hover{
   opacity: .6;
 }
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+
 /* Medium screens */
 @media all and (max-width: 800px) {
   .navigation {

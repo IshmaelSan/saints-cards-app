@@ -1,11 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { CardsService } from '../services/cards.service';
 import { Card } from '../models/Card';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+  styleUrls: ['./cards.component.css'],
+  animations:[
+  trigger('flipAnimation', [
+    state('front', style({
+      transform:'rotateY(0deg)',
+      visibility: 'visible',
+    })),
+    state('back', style({
+      transform:'rotateY(180deg)',
+      visibility: 'hidden',
+    })),
+
+    transition('front => back', animate('300ms ease-in')),
+    ]),
+  ]
 })
 export class CardsComponent implements OnInit {
 
@@ -13,6 +34,7 @@ export class CardsComponent implements OnInit {
   index=1;//iniate index at 1 since onInit has 0th index
   currentQuestion:string;//this.currentQuestion from cards/deck
   currentAnswer:string;//this.currentAnswer from cards/deck
+  stateFront: string = 'front'; stateBack: string = 'back';//beginning states for flip transitions
 
   constructor(private cardService: CardsService) {//pass in cardService from services folder
 
@@ -39,11 +61,21 @@ export class CardsComponent implements OnInit {
     console.log(this.currentAnswer);
   }
 
+  changeCardState(){
+    this.stateFront = (this.stateFront == 'front' ? 'back' : 'front');
+     this.stateBack = (this.stateBack == 'front' ? 'back': 'front');
+  }
+
+
   nextCard(){
-    if(this.index<this.cards.length){//if more cards exist, get next question & answer
+    if(this.stateFront=='front'){//flip card to answer on back
+      this.changeCardState();
+    }
+    else if(this.index<this.cards.length){//if addl cards exist, get next question & answer
       console.log("button clicked.  index: "+this.index);
       this.getQuestion();
       this.getAnswer();
+      this.changeCardState();
       this.index++;
     }
     else{

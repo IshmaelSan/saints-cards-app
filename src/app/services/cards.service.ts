@@ -20,7 +20,9 @@ export class CardsService {
   		return data;
   	});**********took me forever to figure out that Angular 5 uses a pipe to do this*****
   });*/
-  this.cards = this.afs.collection('deck').snapshotChanges().pipe(map(changes => changes.map(a => {
+
+  this.cardsCollection = this.afs.collection('deck');
+  this.cards = this.cardsCollection.snapshotChanges().pipe(map(changes => changes.map(a => {
   	const data = a.payload.doc.data() as Card;
   	data.id = a.payload.doc.id;
   	return data;//map observable firebase db collection into Card array
@@ -29,6 +31,10 @@ export class CardsService {
 
    getCards(){
    	return this.cards;
+   }
+
+   addCard(card:Card){
+   	this.cardsCollection.add(card);
    }
 }
 
