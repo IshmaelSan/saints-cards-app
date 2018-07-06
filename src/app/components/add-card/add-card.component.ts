@@ -7,7 +7,7 @@ import { Card } from '../../models/card';
   templateUrl: './add-card.component.html',
   styleUrls: ['./add-card.component.css']
 })
-export class AddCardComponent implements OnInit {
+export class AddCardComponent implements OnInit {//initate blank card
 	card: Card = {
 		question: '',
 		answer: ''

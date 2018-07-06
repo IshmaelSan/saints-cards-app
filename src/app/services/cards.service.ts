@@ -8,8 +8,9 @@ import { map } from 'rxjs/operators';//why is this not included in rxjs?  just t
   providedIn: 'root'
 })
 export class CardsService {
-	cardsCollection: AngularFirestoreCollection<Card>;
+	cardsCollection: AngularFirestoreCollection<Card>;//firestore entire collection 'deck'
 	cards: Observable<Card[]>;
+	cardDoc: AngularFirestoreDocument<Card>;//firestore document
 
   constructor(public afs: AngularFirestore) {
   //this.cards= this.afs.collection('deck').valueChanges();
@@ -35,6 +36,11 @@ export class CardsService {
 
    addCard(card:Card){
    	this.cardsCollection.add(card);
+   }
+
+   deleteCard(card: Card){//***produces error with updating cards.  FIX!!**//  on edit module, won't be necessary
+   	this.cardDoc = this.afs.doc(`deck/${card.id}`);//get path to doc ID
+   	this.cardDoc.delete();
    }
 }
 

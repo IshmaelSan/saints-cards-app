@@ -16,11 +16,13 @@
 		</div>
 		<div id = "card_back" [@flipAnimation]='stateBack'>{{currentAnswer}}<!--initally hidden 180 deg behind card_front-->
 		</div>
-	</div>
 
-	<div id = "flip_btn_div"><button (click)="nextCard()" type="button" class="btn btn-info">
-		Click
+	</div>
+	
+	<div id = "flip_btn_div"><button (click)="nextCard()" type="button" class="flip-btn btn btn-info col-md-4">
+		Flip
 	</button>
 </div>
+<div id = "flip_btn_div"><button class="delete-btn btn btn-danger col-md-4 center" (click)="deleteCard($event)">Delete Card</button></div>
 <app-add-card></app-add-card>
 </div>

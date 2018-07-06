@@ -153,7 +153,7 @@ nav div:first-child h1, nav ul{
   margin-right: auto;
 }
 
-#flip_btn_div button, .add-card-btn{
+.flip-btn, .add-card-btn{
   width: 600px;
   background: #036;
   color: #fff;
@@ -167,6 +167,10 @@ nav div:first-child h1, nav ul{
 
 button:hover, .add-card-btn:hover{
   opacity: .6;
+}
+
+.delete-btn{
+
 }
 
 .center {

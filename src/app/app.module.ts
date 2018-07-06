@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//import Angular animations (for cardflip)
 import { NgModule } from '@angular/core';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -22,12 +22,19 @@ import { AddCardComponent } from './components/add-card/add-card.component';
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase, 'Test Project'),
+    AngularFireModule.initializeApp(environment.firebase, 'Test Project'),//import test project database
     AngularFirestoreModule,
-    FormsModule,
+    FormsModule,//module for login later
     BrowserAnimationsModule
   ],
   providers: [CardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/*TODO
+routes (guard?)
+edit/create deck module
+login & authentication (name + email)
+finalize css (mobile?  prob not)
+list available decks*/
