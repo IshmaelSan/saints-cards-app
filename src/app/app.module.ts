@@ -13,15 +13,31 @@ import { CardsComponent } from './cards/cards.component'
 
 import { CardsService } from './services/cards.service';
 import { AddCardComponent } from './components/add-card/add-card.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+
+const appRoutes: Routes = [
+
+  { path: '', component: AboutUsComponent},
+  { path: 'about_us', component: AboutUsComponent},
+  { path: 'login', component: LoginComponent},
+  
+  { path: 'deck', component: CardsComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     CardsComponent,
-    AddCardComponent
-  ],
+    AddCardComponent,
+    LoginComponent,
+    AboutUsComponent
+    ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase, 'Test Project'),//import test project database
     AngularFirestoreModule,
     FormsModule,//module for login later

@@ -23,6 +23,7 @@ nav ul li a{
 nav ul li{
   border-bottom: 1px dotted #ddd;
   text-align: center;
+  border-radius: 10px 10px 10px 10px;
 }
 /*styling logo*/
 
@@ -38,8 +39,13 @@ nav div:first-child h1, nav ul{
 }
 
 .active{
-  background:#faffbd;
-  color: #444;
+  background:#1A4D80;
+}
+
+.about_us_txt{
+  margin: 0 auto;
+  color: #ddd;
+  padding-top: 20px;
 }
 
 
@@ -100,12 +106,13 @@ nav div:first-child h1, nav ul{
 }
 
 
-#context-box, .btn-sect{
+/*#context-box, .btn-sect{
   width: 100%;
   height: 100%;
   position: fixed;
   background-color: #f1f1f1;
-}
+}*/
+
 .card_section, .card-content{
   position: relative;
   height: 300px;
@@ -190,8 +197,8 @@ button:hover, .add-card-btn:hover{
    nav div:first-child img{
     height: 20%;
    }
-  .card_section{
-    height: 60%;
+  #content-box{
+    height: 50%;
     width: 100%;
     margin: 1% 1% 1% 1%;
   }
