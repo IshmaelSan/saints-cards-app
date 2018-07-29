@@ -8,25 +8,30 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { auth } from 'firebase/app';
 import { AuthService } from './services/auth.service';
+import { OnlyLoggedInUsersGuardGuard } from './services/only-logged-in-users-guard.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+  
 import { CardsComponent } from './cards/cards.component'
 
 import { CardsService } from './services/cards.service';
 import { AddCardComponent } from './components/add-card/add-card.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const appRoutes: Routes = [
 
-  { path: '', component: LoginComponent},
+  { path: '', component: LoginComponent },
   { path: 'about_us', component: AboutUsComponent},
-  { path: 'login', component: LoginComponent},  
-  { path: 'deck', component: CardsComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'deck',
+  component: CardsComponent,
+  canActivate: [OnlyLoggedInUsersGuardGuard] 
+},
 ];
 
 @NgModule({
@@ -35,7 +40,7 @@ const appRoutes: Routes = [
     CardsComponent,
     AddCardComponent,
     LoginComponent,
-    AboutUsComponent
+    AboutUsComponent,
     ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [CardsService, AuthService],
+  providers: [CardsService, AuthService, OnlyLoggedInUsersGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

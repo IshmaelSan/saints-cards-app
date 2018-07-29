@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service'
+import { AuthService } from '../../services/auth.service';
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
 
  loginForm: FormGroup;
-  errorMessage: string = '';
+ errorMessage: string = '';
 
   constructor(//bring imports into constructor
     public authService: AuthService,
@@ -39,5 +39,4 @@ export class LoginComponent {
       this.errorMessage = err.message;
     })
   }
-
 }

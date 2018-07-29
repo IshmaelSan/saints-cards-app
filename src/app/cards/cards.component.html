@@ -25,10 +25,20 @@
 		</button>
 	</div>
 	<div id = "flip_btn_div" class="col-md-12"><button class="delete-btn btn btn-danger col-md-4" (click)="deleteCard($event)">Delete Card</button></div>
-	<!--<div class="col-md-12 text-center mt-4">
+	
+</div>
+</div>
+
+<div>
+	<ul id="idontknow" class="col-md-12">
+		<li *ngFor="let deck of decks" (click)="logout(deck)" [id]="deck" class="col-md-2 center"><a>{{deck.id}}</a></li>
+	</ul>
+</div>
+
+<button type="submit" (click)="tryLogout()" class="btn btn-default">Logout</button>
+
+<!--<div class="col-md-12 text-center mt-4">
 		<button id="edit-card-btn" class="btn m-2">Edit</button>
 		<button id="del-card-btn" class="btn btn-danger">Delete</button>
 	</div>-->
 	<!--<app-add-card></app-add-card>-->
-</div>
-</div>

@@ -76,7 +76,7 @@
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
+              "src/team_ico.ico",
               "src/assets"
             ]
           }
