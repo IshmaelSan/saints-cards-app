@@ -42,7 +42,7 @@ nav div:first-child h1, nav ul{
   background:#1A4D80;
 }
 
-.about_us_txt{
+.about_us_txt, .form-group{
   margin: 0 auto;
   color: #ddd;
   padding-top: 20px;

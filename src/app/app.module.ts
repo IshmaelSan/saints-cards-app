@@ -8,7 +8,10 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { FormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AuthService } from './services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CardsComponent } from './cards/cards.component'
 
 import { CardsService } from './services/cards.service';
@@ -20,10 +23,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const appRoutes: Routes = [
 
-  { path: '', component: AboutUsComponent},
+  { path: '', component: LoginComponent},
   { path: 'about_us', component: AboutUsComponent},
-  { path: 'login', component: LoginComponent},
-  
+  { path: 'login', component: LoginComponent},  
   { path: 'deck', component: CardsComponent },
 ];
 
@@ -37,20 +39,23 @@ const appRoutes: Routes = [
     ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(environment.firebase, 'Test Project'),//import test project database
+    AngularFireModule.initializeApp(environment.firebase/*, 'Test Project'*/),//import test project database
+    RouterModule.forRoot(appRoutes),    
     AngularFirestoreModule,
+    AngularFireAuthModule,
     FormsModule,//module for login later
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [CardsService],
+  providers: [CardsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
 /*TODO
-routes (guard?)
+routesDONE (guard?)
 edit/create deck module
-login & authentication (name + email)
+login & authentication (name + email)DONE
 finalize css (mobile?  prob not)
-list available decks*/
+list available decks
+*/

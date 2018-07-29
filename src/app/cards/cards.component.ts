@@ -31,7 +31,7 @@ import {
 export class CardsComponent implements OnInit {
 
 	cards:Card[];//array of cards/a dick
-  index=0;//initiate index at 1 since onInit has 0th index
+  index=0;//initiate index 
   currentQuestion:string;//this.currentQuestion from cards/deck
   currentAnswer:string;//this.currentAnswer from cards/deck
   stateFront: string = 'front'; stateBack: string = 'back';//beginning states for flip transitions
@@ -42,11 +42,11 @@ export class CardsComponent implements OnInit {
 
   ngOnInit() {
   	this.cardService.getCards().subscribe(cards =>{
-  		console.log("length: "+cards.length);
   		this.cards = cards;//make a place in array for each card in deck and place in cards[]
       if(cards.length>0){
-        this.currentQuestion=this.cards[0].question;//populate currentQuestion binding with 0th question in cards array
-        this.currentAnswer=this.cards[0].answer;//populate currentAnswer
+        this.currentQuestion=this.cards[this.index].question;//populate currentQuestion binding with 0th question in cards array
+        this.currentAnswer=this.cards[this.index].answer;//populate currentAnswer
+        //console.log("index: "+this.index);
       }
     });
   }
@@ -58,12 +58,12 @@ export class CardsComponent implements OnInit {
 
   getAnswer(){
     this.currentAnswer=this.cards[this.index].answer;//update answer
-    console.log(this.currentAnswer);
+    //console.log(this.currentAnswer);
   }
 
   changeCardState(){
     this.stateFront = (this.stateFront == 'front' ? 'back' : 'front');
-     this.stateBack = (this.stateBack == 'front' ? 'back': 'front');
+    this.stateBack = (this.stateBack == 'front' ? 'back': 'front');
   }
 
 
@@ -71,21 +71,22 @@ export class CardsComponent implements OnInit {
     if(this.stateFront=='front'){//flip card to answer on back
       this.changeCardState();
     }
-    else if(this.index<this.cards.length){//if addl cards exist, get next question & answer
+    else if(this.index<this.cards.length-1){//if additional cards exist, get next question & answer
       console.log("button clicked.  index: "+this.index);
       this.index++;
+      console.log("after index: "+this.index);
       this.getQuestion();
       this.getAnswer();
       this.changeCardState();
       
     }
     else{
-      this.currentQuestion='--end of deck--';
-      console.log('keine Karten mehr. index: '+this.index);//no more cards
+      this.index=-1;
+      this.nextCard();//recursively call next card      
     }
   }
 
-  deleteCard(event){
+  deleteCard(event){//delete card in deck
     this.cardService.deleteCard(this.cards[this.index]);
   }
 
