@@ -5,33 +5,12 @@
 	</ul>
 
 </div>-->
-<div class="cards-wrapper">
-	<ng-template #noCards>
-		<hr>
-		<h5>There are no cards to show</h5>
-	</ng-template>
 
-	<div id="context-box col-md-12">
-		<div class = "card_section col-md-4">
-			<div id = "card_front"  [@flipAnimation]='stateFront' click>{{currentQuestion}}
-			</div>
-			<div id = "card_back" [@flipAnimation]='stateBack'>{{currentAnswer}}<!--initally hidden 180 deg behind card_front-->
-			</div>
 
-		</div>
 
-		<div id = "flip_btn_div" class="col-md-12"><button (click)="nextCard()" type="button" class="flip-btn btn btn-info col-md-4">
-			Flip
-		</button>
-	</div>
-	<div id = "flip_btn_div" class="col-md-12"><button class="delete-btn btn btn-danger col-md-4" (click)="deleteCard($event)">Delete Card</button></div>
-	
-</div>
-</div>
-
-<div>
-	<ul id="idontknow" class="col-md-12">
-		<li *ngFor="let deck of decks" (click)="logout(deck)" [id]="deck" class="col-md-2 center"><a>{{deck.id}}</a></li>
+<div class="col-md-12">
+	<ul id="cardList" class="col-md-6 center">
+		<li *ngFor="let deck of decks let i = index" (click)="findDeck(i)" [id]="deck" class="col-md-2 center"><a>{{deck.id}}</a></li>
 	</ul>
 </div>
 

@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { DeckComponent } from './cards/deck/deck.component';
 
 const appRoutes: Routes = [
 
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   component: CardsComponent,
   canActivate: [OnlyLoggedInUsersGuardGuard] 
 },
+{ path: 'cards',
+  component: DeckComponent,
+  canActivate: [OnlyLoggedInUsersGuardGuard] 
+}
 ];
 
 @NgModule({
@@ -41,6 +46,7 @@ const appRoutes: Routes = [
     AddCardComponent,
     LoginComponent,
     AboutUsComponent,
+    DeckComponent,
     ],
   imports: [
     BrowserModule,

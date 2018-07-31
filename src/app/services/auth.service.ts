@@ -3,6 +3,7 @@ import { AngularFireAuth} from "angularfire2/auth";
 import { auth } from 'firebase/app';
 import * as firebase from 'firebase/app';
 import { Router, RouterModule } from '@angular/router';
+import {}
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 export class AuthService {
 	private logged = false;
   private router : Router;
+  public deck: string;
 
   constructor(private afAuth: AngularFireAuth, router:Router) {this.router=router;}
 
@@ -36,11 +38,13 @@ export class AuthService {
   	return this.logged;
   }
 
-  doLogout(){
-   
+  setDeck(card:string){
+    this.deck=card;
+  }
+
+  doLogout(){   
     firebase.auth().signOut();
       this.logged=false;
       this.router.navigate(['/']);
   }
-
 }

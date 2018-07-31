@@ -175,15 +175,12 @@ nav div:first-child h1, nav ul{
 button:hover, .add-card-btn:hover{
   opacity: .6;
 }
-
-.delete-btn{
-
+.center{
+  margin: 0 auto;
 }
-
-.center {
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
+#cardList{
+  list-style: none;
+  color: #fff;
 }
 
 
