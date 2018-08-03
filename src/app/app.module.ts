@@ -23,10 +23,11 @@ import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { DeckComponent } from './cards/deck/deck.component';
+import { AddDeckComponent } from './components/add-deck/add-deck.component';
 
 const appRoutes: Routes = [
 
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'about_us', component: AboutUsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'deck',
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     LoginComponent,
     AboutUsComponent,
     DeckComponent,
+    AddDeckComponent,
     ],
   imports: [
     BrowserModule,

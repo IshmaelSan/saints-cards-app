@@ -41,12 +41,24 @@ export class CardsService {
   }
 
   addCard(card:Card){
-    this.cardsCollection.add(card);
+    this.xcollection.add(card);
+  }
+
+  addDeck(card:string){
+    var thing1 = this.cardsCollection.doc(card).collection('subject');
+    //this.cardsCollection.add('');
   }
 
    deleteCard(card: Card){//***produces error with updating cards.  FIX!!**//  on edit module, won't be necessary
-   	this.cardDoc = this.afs.doc(`deck/${card.id}`);//get path to doc ID
+   	this.cardDoc = this.afs.doc('test/'+this.authService.deck+'/subject/'+card.id);//get path to doc ID
+     console.log(card.id);
    	this.cardDoc.delete();
+   }
+
+   deleteDeck(loc){
+     console.log('in deleteDeck in service: '+loc.id);
+     this.cardDoc = this.afs.doc('test/'+loc.id);
+     this.cardDoc.delete();
    }
  }
 

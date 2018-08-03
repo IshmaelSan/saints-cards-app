@@ -24,4 +24,9 @@ export class AppComponent{
  	}
  	return this.login;
  }
+
+ tryLogout(){
+    this.authService.doLogout(); 
+    console.log('in app comp try logout');   
+  }
 }

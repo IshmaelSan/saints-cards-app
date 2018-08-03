@@ -4,8 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { Router, Params } from '@angular/router';
 import { Card } from '../../models/Card';
 
-import { Card } from '../../models/Card';
-
 import {
 	trigger,
 	state,
@@ -20,24 +18,24 @@ import {
 	styleUrls: ['./deck.component.css'],
 	animations:[
 	trigger('flipAnimation', [
-	state('front', style({
-		transform:'rotateY(0deg)',
-		visibility: 'visible',
-	})),
-	state('back', style({
-		transform:'rotateY(180deg)',
-		visibility: 'hidden',
-	})),
+    state('front', style({
+      transform:'rotateY(0deg)',
+      visibility: 'visible',
+    })),
+    state('back', style({
+      transform:'rotateY(180deg)',
+      visibility: 'hidden',
+    })),
 
-	transition('front => back', animate('300ms ease-in')),
-	]),
+    transition('front => back', animate('300ms ease-in')),
+    ]),
 	]
 })
 export class DeckComponent implements OnInit {
 
 	cards:Card[];//array of cards/a deck
-	deck:Card[];
   index=0;//initiate index 
+  currentDeck:string;
   currentQuestion:string;//this.currentQuestion from cards/deck
   currentAnswer:string;//this.currentAnswer from cards/deck
   stateFront: string = 'front'; stateBack: string = 'back';//beginning states for flip transitions
@@ -53,26 +51,28 @@ export class DeckComponent implements OnInit {
   		if(cards.length>0){
         this.currentQuestion=this.cards[this.index].question;//populate currentQuestion binding with 0th question in cards array
         this.currentAnswer=this.cards[this.index].answer;//populate currentAnswer
-    }
-});
+        this.currentDeck=this.authService.deck;
+      }
+    });
 
   }
   getQuestion(){
     this.currentQuestion=this.cards[this.index].question;//update question
-}
+    console.log(this.cards[this.index])
+  }
 
-getAnswer(){
+  getAnswer(){
     this.currentAnswer=this.cards[this.index].answer;//update answer
-}
+  }
 
-changeCardState(){
-	this.stateFront = (this.stateFront == 'front' ? 'back' : 'front');
-	this.stateBack = (this.stateBack == 'front' ? 'back': 'front');
-}
+  changeCardState(){
+    this.stateFront = (this.stateFront == 'front' ? 'back' : 'front');
+    this.stateBack = (this.stateBack == 'front' ? 'back': 'front');
+  }
 
 
-nextCard(){
-	console.log('current question: '+this.cards[0]);
+  nextCard(){
+    console.log('current question: '+this.cards[0]);
     if(this.stateFront=='front'){//flip card to answer on back
     	this.changeCardState();
     }
@@ -88,7 +88,17 @@ nextCard(){
     else{
     	this.index=-1;
       this.nextCard();//recursively call next card      
+    }
   }
+
+deleteCard(event){//delete card in deck
+  this.cardService.deleteCard(this.cards[this.index]);
+  length-=1;
+  this.nextCard();
+}
+
+addCard(){
+
 }
 
 }

@@ -26,7 +26,7 @@ export class CardsComponent implements OnInit {
 
   ngOnInit() {
     this.cardService.getDeck().subscribe(decks =>{
-      this.decks = decks;//make a place in array for each card in deck and place in cards[]
+      this.decks = decks;//make a place in array for each deck
       if(decks.length>0){
         console.log('deck: '+this.decks[0].id);
       }
@@ -38,10 +38,9 @@ export class CardsComponent implements OnInit {
     this.router.navigate(['/cards']);
   }
 
-  deleteCard(event){//delete card in deck
-    this.cardService.deleteCard(this.cards[this.index]);
-    length--;
-    this.nextCard()
+  deleteDeck(loc){//delete card in deck
+    console.log(this.decks[loc].id);
+    this.cardService.deleteDeck(this.decks[loc]);
   }
 
   tryLogout(){
