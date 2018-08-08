@@ -11,6 +11,7 @@ export class AuthService {
 	private logged = false;
   private router : Router;
   public deck: string;
+  private instr: boolean;
 
   constructor(private afAuth: AngularFireAuth, router:Router) {this.router=router;}
 
@@ -27,6 +28,12 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
       .then(res => {
+        var user = firebase.auth().currentUser;
+        if(user.uid == "1bMVrYkI9vQ4BbG0ZO0dZGAWkvi2"){
+          this.instr=true;
+        }
+        else
+          console.log('no user apparently');
         resolve(res);
         this.logged = true;
       }, err => reject(err))

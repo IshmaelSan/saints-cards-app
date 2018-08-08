@@ -1,4 +1,4 @@
-<div class="card btn-sect">
+<div class="card btn-sect" *ngIf="isTeach()">
 	<div class="card-content">
 		<span class="card-title">Add Card</span>
 		<form (ngSubmit)="onSubmit()">
@@ -13,7 +13,6 @@
 				</div>
 			</div>
 			<input type="submit" value="Submit" class="btn add-card-btn col-md-12">
-			
 		</form>
 	</div>
 </div>

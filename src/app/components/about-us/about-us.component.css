@@ -1,0 +1,22 @@
+.container{
+    background-color: #f5f7fa;
+    margin-top: 35px;
+    padding-top: 10px;
+}
+.container-2{
+    background-color: antiquewhite;
+    padding: 10px;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h1.my-4{
+ text-align: center;
+}
+
+h2.my-4{
+ text-align: center;
+}

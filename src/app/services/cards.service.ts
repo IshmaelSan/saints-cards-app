@@ -49,6 +49,10 @@ export class CardsService {
     //this.cardsCollection.add('');
   }
 
+  isInstr():boolean{
+    return this.authService.instr;
+  }
+
    deleteCard(card: Card){//***produces error with updating cards.  FIX!!**//  on edit module, won't be necessary
    	this.cardDoc = this.afs.doc('test/'+this.authService.deck+'/subject/'+card.id);//get path to doc ID
      console.log(card.id);

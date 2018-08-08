@@ -12,6 +12,7 @@ export class AddCardComponent implements OnInit {//initate blank card
 		question: '',
 		answer: ''
 	}
+  teach:boolean;
 
   constructor(private cardservice: CardsService) { }
 
@@ -24,6 +25,11 @@ export class AddCardComponent implements OnInit {//initate blank card
   		this.card.question='';//clear fields
   		this.card.answer='';
   	}
+  }
+
+  isTeach():boolean{
+    this.teach = this.cardservice.isInstr();
+    return this.teach;
   }
 
 }

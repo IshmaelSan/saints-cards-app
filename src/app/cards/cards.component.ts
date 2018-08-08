@@ -18,6 +18,7 @@ export class CardsComponent implements OnInit {
   currentAnswer:string;//this.currentAnswer from cards/deck
   stateFront: string = 'front'; stateBack: string = 'back';//beginning states for flip transitions
   router: Router;
+  teach:boolean;
 
 
   constructor(private cardService: CardsService, private authService:AuthService, router:Router) {
@@ -36,6 +37,11 @@ export class CardsComponent implements OnInit {
   findDeck(loc){    
     this.authService.setDeck(this.decks[loc].id);
     this.router.navigate(['/cards']);
+  }
+
+  isTeach():boolean{
+    this.teach = this.authService.instr;
+    return this.teach;
   }
 
   deleteDeck(loc){//delete card in deck

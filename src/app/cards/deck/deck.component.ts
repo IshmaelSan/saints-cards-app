@@ -40,6 +40,7 @@ export class DeckComponent implements OnInit {
   currentAnswer:string;//this.currentAnswer from cards/deck
   stateFront: string = 'front'; stateBack: string = 'back';//beginning states for flip transitions
   router: Router;
+  teach: boolean;
 
   constructor(private cardService: CardsService, private authService:AuthService, router:Router) {
   	this.router=router;
@@ -70,19 +71,17 @@ export class DeckComponent implements OnInit {
     this.stateBack = (this.stateBack == 'front' ? 'back': 'front');
   }
 
-
   nextCard(){
     console.log('current question: '+this.cards[0]);
-    if(this.stateFront=='front'){//flip card to answer on back
+    if(this.stateFront=='back'){//flip card to answer on back
     	this.changeCardState();
     }
-    else if(this.index<this.cards.length-1){//if additional cards exist, get next question & answer
+    if(this.index<this.cards.length-1){//if additional cards exist, get next question & answer
     	console.log("button clicked.  index: "+this.index);
     	this.index++;
     	console.log("after index: "+this.index);
     	this.getQuestion();
     	this.getAnswer();
-    	this.changeCardState();
 
     }
     else{
@@ -97,8 +96,9 @@ deleteCard(event){//delete card in deck
   this.nextCard();
 }
 
-addCard(){
-
-}
+isTeach():boolean{
+    this.teach = this.authService.instr;
+    return this.teach;
+  }
 
 }

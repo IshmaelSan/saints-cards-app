@@ -11,7 +11,7 @@
 <div class="col-md-12">
 	<ul id="cardList" class="col-md-6 center">
 			<h2 class="h2"><u>Decks </u><small class="text-muted center">Click on title to study</small></h2>
-		<li *ngFor="let deck of decks let i = index" [id]="deck" class="col-md-12 center row text-capitalize m-5"><a class="col-md-6"(click)="findDeck(i)">{{deck.id}}</a><div class="text-right"><div><button class="delete-btn btn btn-danger btn-sm justify-content-end" (click)="deleteDeck(i)">Delete</button></div></div></li>
+		<li *ngFor="let deck of decks let i = index" [id]="deck" class="col-md-12 center row text-capitalize m-5"><a class="col-md-6"(click)="findDeck(i)">{{deck.id}}</a><div class="text-right" *ngIf="isTeach()"><div><button class="delete-btn btn btn-danger btn-sm justify-content-end" (click)="deleteDeck(i)">Delete</button></div></div></li>
 	</ul>
 </div>
 

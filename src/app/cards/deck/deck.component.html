@@ -15,11 +15,13 @@
 
 		</div>
 
-		<div id = "flip_btn_div" class="col-md-12"><button (click)="nextCard()" type="button" class="flip-btn btn btn-info col-md-4">
+		<div id = "flip_btn_div" class="col-md-12"><button (click)="changeCardState()" type="button" class="flip-btn btn btn-info col-md-4">
 			Flip
 		</button>
+		<div class="col-md-12 col-xs-3"><button class="flip-btn btn-info col-md-2">Previous</button>
+		<button (click)="nextCard()" class="flip-btn btn-info col-md-2">Next</button></div>
 	</div>
-	<div id = "flip_btn_div" class="col-md-12"><button class="delete-btn btn btn-danger col-md-4" (click)="deleteCard($event)">Delete Card</button></div>
+	<div id = "flip_btn_div" class="col-md-12" *ngIf="isTeach()"><button class="delete-btn btn btn-danger col-md-4 ma-2" (click)="deleteCard($event)">Delete Card</button></div>
 	
 	</div>
 </div>
