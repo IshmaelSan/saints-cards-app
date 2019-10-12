@@ -3,6 +3,7 @@ import { CardsService } from '../../services/cards.service';
 import { AuthService } from '../../services/auth.service';
 import { Router, Params } from '@angular/router';
 import { Card } from '../../models/Card';
+//import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
 import {
 	trigger,
@@ -72,7 +73,7 @@ export class DeckComponent implements OnInit {
   }
 
   nextCard(){
-    console.log('current question: '+this.cards[0]);
+    /*console.log('current question: '+this.cards[0]);
     if(this.stateFront=='back'){//flip card to answer on back
     	this.changeCardState();
     }
@@ -87,7 +88,7 @@ export class DeckComponent implements OnInit {
     else{
     	this.index=-1;
       this.nextCard();//recursively call next card      
-    }
+    }*/
   }
 
 deleteCard(event){//delete card in deck

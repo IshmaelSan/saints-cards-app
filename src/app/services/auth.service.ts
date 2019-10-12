@@ -11,7 +11,7 @@ export class AuthService {
 	private logged = false;
   private router : Router;
   public deck: string;
-  private instr: boolean;
+  public instr: boolean;
 
   constructor(private afAuth: AngularFireAuth, router:Router) {this.router=router;}
 

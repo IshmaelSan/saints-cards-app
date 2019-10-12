@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Observable, interval } from 'rxjs';
 import { Card } from '../models/card';
 import { map } from 'rxjs/operators';//why is this not included in rxjs?  just to make things difficult?
 import { AuthService } from './auth.service';
@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 export class CardsService {
 	cardsCollection: AngularFirestoreCollection<Card>;//firestore entire collection 'deck'
   xcollection: AngularFirestoreCollection<Card>;
+  //let t = Observable.interval(1000);
   cards: Observable<Card[]>;
   xcards: Observable<Card[]>;
 	cardDoc: AngularFirestoreDocument<Card>;//firestore document
